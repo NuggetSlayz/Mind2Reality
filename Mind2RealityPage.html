@@ -1,0 +1,535 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M2R | MIND2REALITY</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000000;
+            position: relative;
+            color: white;
+            overflow-x: hidden;
+        }
+
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        /* Enhanced visual effects */
+        filter: 
+            brightness(1.1) 
+            blur(0.3px)
+            hue-rotate(0deg)
+            saturate(1.2)
+            contrast(1.1);
+        animation: chromaticShift 10s infinite alternate;
+    }
+
+    @keyframes chromaticShift {
+        0% {
+            filter: 
+                brightness(1.1) 
+                blur(0.3px)
+                hue-rotate(0deg)
+                saturate(1.2)
+                contrast(1.1);
+            transform: scale(1) rotate(0deg);
+        }
+        100% {
+            filter: 
+                brightness(1.2) 
+                blur(0.5px)
+                hue-rotate(15deg)
+                saturate(1.4)
+                contrast(1.2);
+            transform: scale(1.05) rotate(2deg);
+        }
+    }
+
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            z-index: 100;
+            background: rgba(0,0,0,0.8);
+        }
+
+        .nav-button {
+            padding: 0.5rem 1rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: white;
+            color: black;
+        }
+
+        .section {
+            position: relative;
+            min-height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .section.active {
+            display: flex;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .content {
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .logo {
+        max-width: 200px;
+        height: auto;
+        margin-bottom: 2rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .member-card {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .member-card:hover {
+        transform: scale(1.05);
+    }
+
+    .member-name {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .member-card img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .social-links {
+        margin-top: 0.8rem;
+    }
+
+    .social-icon {
+        display: inline-block;
+        background: #ffffff;
+        color: black;
+        text-decoration: none;
+        padding: 0.3rem 1rem;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease;
+        width: 60px;
+    }
+
+    .social-icon:hover {
+        background-color: #ffffff24;
+    }
+
+    .social-icon img {
+        display: none;
+    }
+
+    .social-icon::after {
+        content: 'X';
+        font-weight: bold;
+    }
+
+    .leads-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 800px;
+
+        margin: 0 auto;
+    }
+
+    .members-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .project-preview {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .discord-button {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 1rem 2rem;
+        background: #7289DA;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+    }
+
+    .discord-button:hover {
+        background: #5b6eae;
+    }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <button class="nav-button" onclick="showSection('home')">Home</button>
+        <button class="nav-button" onclick="showSection('about')">About</button>
+        <button class="nav-button" onclick="showSection('leads')">Leads</button>
+        <button class="nav-button" onclick="showSection('members')">Members</button>
+        <button class="nav-button" onclick="showSection('projects')">Projects</button>
+        <button class="nav-button" onclick="showSection('join')">Join Us</button>
+    </nav>
+    
+    <section id="home" class="section">
+        <div class="content">
+            <img src="https://pbs.twimg.com/profile_images/1426301397134241793/zbrde8ex_400x400.jpg" alt="M2R Logo" class="logo">
+            <h1>MIND2REALITY</h1>
+            <p>Where Creativity Meets Reality</p>
+        </div>
+    </section>
+    
+    <section id="about" class="section">
+        <div class="content">
+            <h2>Who We Are</h2>
+            <p>M2R is a collective of creative editors dedicated to pushing the boundaries of digital entertainment.</p>
+            <p>We collaborate, create, and inspire through various forms of media.</p>
+        </div>
+    </section>
+    
+    <section id="leads" class="section">
+        <div class="content">
+        <h2>Our Leads</h2>
+            <div class="leads-grid">
+                <div class="member-card">
+                    <h3 class="leader-name">Styxified</h3>
+                    <a href="https://www.youtube.com/@xStyxified" target="_blank">
+                        <img src="https://pbs.twimg.com/profile_images/1812222190151958529/bteXGNNG_400x400.jpg" alt="Styxified">
+                    </a>
+                    <div class="social-links">
+                        <a href="https://x.com/Styxified" target="_blank" class="social-icon">
+                            <img src="x-icon.png" alt="X">
+                        </a>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <h3 class="leader-name">Pidge</h3>
+                    <a href="https://www.youtube.com/channel/UC_kDeKSrlASJgMrWKZpSP6Q" target="_blank">
+                        <img src="https://pbs.twimg.com/profile_images/1777337061994848256/KO7_ykoi_400x400.jpg" alt="Pidge">
+                    </a>
+                    <div class="social-links">
+                        <a href="https://x.com/glitchpidge" target="_blank" class="social-icon">
+                            <img src="x-icon.png" alt="X">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="members" class="section">
+    <div class="content">
+        <h2>Our Members</h2>
+        <div class="members-grid">
+            <!-- Member 1 -->
+            <div class="member-card">
+                <h3 class="member-name">Nuggetz</h3>
+                <a href="https://www.youtube.com/@Nuggetz69" target="_blank">
+                    <img src="https://pbs.twimg.com/profile_images/1680537427377627138/UZa4zT2n_400x400.jpg" alt="Nuggetz">
+                </a>
+
+                <div class="social-links">
+                    <a href="https://x.com/NuggetSlayz" target="_blank" class="social-icon">
+                        <img src="x-icon.png" alt="X">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="member-card">
+                <h3 class="member-name">Saniuary</h3>
+                <a href="https://www.youtube.com/@saniuary" target="_blank">
+                    <img src="https://pbs.twimg.com/profile_images/1785977585324658688/CDM38WRp_400x400.jpg" alt="Saniuary">
+                </a>
+                <div class="social-links">
+                    <a href="https://x.com/Sanizuxd" target="_blank" class="social-icon">
+                        <img src="x-icon.png" alt="X">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="member-card">
+                <h3 class="member-name">Akuma</h3>
+                <a href="[youtube-link]" target="_blank">
+                    <img src="member3.jpg" alt="Akuma">
+                </a>
+                <div class="social-links">
+                    <a href="[x-link]" target="_blank" class="social-icon">
+                        <img src="x-icon.png" alt="X">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="member-card">
+                <h3 class="member-name">Mizu</h3>
+                <a href="https://www.youtube.com/@Mizuamv" target="_blank">
+                    <img src="https://yt3.googleusercontent.com/0TwaU4UfPuwHq1Idu9f2dhlBZWTAnEyBhdHPsivYihAcFlA-JvW7c4RtwRAXwpB6QusBy9sv=s160-c-k-c0x00ffffff-no-rj" alt="Mizu">
+                </a>
+                <div class="social-links">
+                    <a href="https://x.com/Yxkoku" target="_blank" class="social-icon">
+                        <img src="x-icon.png" alt="X">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Member 5 -->
+            <div class="member-card">
+                <h3 class="member-name">SoraSignature</h3>
+                    <img src="https://pbs.twimg.com/profile_images/1864191307293577216/AR3IxM55_400x400.jpg" alt="SoraSignature">
+                </a>
+                <div class="social-links">
+                    <a href="https://x.com/sorasignature" target="_blank" class="social-icon">
+                        <img src="x-icon.png" alt="X">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Member 6 -->
+            <div class="member-card">
+                <h3 class="member-name">Zxastyx</h3>
+                <a href="https://www.youtube.com/@zxastyx" target="_blank">
+                    <img src="https://pbs.twimg.com/profile_images/1813494736529108992/F3Pg0cVW_400x400.jpg" alt="Zxastyx">
+                </a>
+                <div class="social-links">
+                    <a href="https://x.com/memo1ers" target="_blank" class="social-icon">
+                        <img src="x-icon.png" alt="X">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Member 7 -->
+            <div class="member-card">
+                <h3 class="member-name">Maximoose</h3>
+                    <img src="https://pbs.twimg.com/profile_images/1861342132679618560/4vovwOgA_400x400.jpg" alt="Maximoose">
+                </a>
+                <div class="social-links">
+                    <a href="https://x.com/notmaximoose?s=21" target="_blank" class="social-icon">
+                        <img src="x-icon.png" alt="X">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Member 8 -->
+            <div class="member-card">
+                <h3 class="member-name">Itt</h3>
+                <a href="[youtube-link]" target="_blank">
+                    <img src="member8.jpg" alt="Itt">
+                </a>
+                <div class="social-links">
+                    <a href="[x-link]" target="_blank" class="social-icon">
+
+                        <img src="x-icon.png" alt="X">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Member 9 -->
+            <div class="member-card">
+                <h3 class="member-name">Yex</h3>
+                <a href="https://www.youtube.com/@yexatious" target="_blank">
+                    <img src="https://pbs.twimg.com/profile_images/1888139125657575424/7-zWSJqm_400x400.jpg" alt="Yex">
+                </a>
+                <div class="social-links">
+
+                    <a href="https://x.com/Vhexatious" target="_blank" class="social-icon">
+
+                        <img src="x-icon.png" alt="X">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <section id="projects" class="section">
+        <div class="content">
+            <div class="projects-grid">
+                <div class="project-card">
+                    <a href="https://youtube.com/[project-link]" target="_blank">
+                        <video class="project-preview" muted loop>
+                            <source src="project1.mp4" type="video/mp4">
+                        </video>
+                        <span class="project-name">Project Name</span>
+                        <span class="creator-name">Creator Name</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="join" class="section">
+        <div class="content">
+            <h2>Join Us</h2>
+            <p>Anyone is welcome to join!</p>
+            <a href="https://discord.gg/AuEMzrmNxU" target="_blank" class="discord-button">Join our Discord</a>
+        </div>
+    </section>
+
+    <canvas id="particleCanvas" width="1536" height="703"></canvas>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Particle animation
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 70;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 2;
+            this.vy = (Math.random() - 0.5) * 2;
+            this.radius = Math.random() * 2 + 1;
+            this.hue = Math.random() * 360;
+            }
+
+            update() {
+                this.x += this.vx;
+            this.y += this.vy;
+
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+            this.hue = (this.hue + 0.2) % 360;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `hsl(${this.hue}, 70%, 50%)`;
+                ctx.fill();
+            }
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 150) {
+                    const opacity = 1 - (distance / 150);
+                    const gradient = ctx.createLinearGradient(
+                        particles[i].x, particles[i].y,
+                        particles[j].x, particles[j].y
+                    );
+
+                    gradient.addColorStop(0, `hsla(${particles[i].hue}, 70%, 50%, ${opacity})`);
+                    gradient.addColorStop(1, `hsla(${particles[j].hue}, 70%, 50%, ${opacity})`);
+
+                    ctx.strokeStyle = gradient;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+        function animate() {
+           ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+
+        connectParticles();
+        requestAnimationFrame(animate);
+
+    }
+
+    function init() {
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+    }
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        init();
+    });
+
+    init();
+    animate();
+    </script>
+
+
+</body></html>
