@@ -4,6 +4,7 @@ It is a personal project website I made based on my editing group, Mind2Reality,
 # Languages And Technologies
 ### This project is built using:
 
+#### Figma – Wireframe and Design the website
 #### HTML5 – Structuring the website
 #### CSS3 & TailwindCSS – Styling and responsiveness
 #### JavaScript – Core interactivity
