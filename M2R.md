@@ -1,18 +1,3 @@
-# Personal Project
-It is a personal project website I made based on my editing group, Mind2Reality, also known as M2R.
-
-# Languages And Technologies
-### This project is built using:
-
-#### Figma – Wireframe and Design the website
-#### HTML5 – Structuring the website
-#### CSS3 & TailwindCSS – Styling and responsiveness
-#### JavaScript – Core interactivity
-#### ReactJS – UI components
-#### ThreeJS – 3D graphics & animations
-#### GSAP – Smooth animations
-#### FontAwesome – Icons & UI elements
-
 # MIND2REALITY - Creative Editing Collective
 🚀 Experimenting Beyond Our Own Bounds
 
@@ -30,4 +15,4 @@ It is a personal project website I made based on my editing group, Mind2Reality,
 #### Custom Scripts & Plugins
 
 # 🤝 JoinUs
-#### If you're passionate about editing, motiongraphics, and experimentalart, consider contributing or joining the M2RCommunity!
+#### If you're passionate about editing, motion graphics, and experimental art, consider contributing or joining the M2R Community!
