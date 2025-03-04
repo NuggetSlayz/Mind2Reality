@@ -1,5 +1,5 @@
 # Personal Project
-It is a personal project website I made based on an editing group run by Styxified called, Mind2Reality, also known as M2R.
+It is a personal project website I made to test my skills.
 
 # Languages And Technologies
 ### This project is built using:
